@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tepi Cangkir</title>
+  <link rel="stylesheet" href="barang.css" />
+  <link rel="stylesheet" href="logout.css">
+  <link rel="stylesheet" href="Popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1><i>TEPI CANGKIR</i></h1>
+      </header>
+    
+      <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">Hallo, Bli Gung</div>
+            <ul class="menu">
+              <li><a href="dashboard.html"><i class="fas fa-house"></i> Dashboard</a></li>
+              <li><a href="kasir.html"><i class="fas fa-cash-register"></i> Kasir</a></li>
+              <li class="active"><a href="#"><i class="fas fa-box"></i> Barang</a></li>
+              <li><a href="laporan.html"><i class="fas fa-chart-bar"></i> Laporan</a></li>
+              <li><a href="pengaturan.html"><i class="fas fa-gear"></i> Pengaturan</a></li>
+              <li><a href="#" id="logout-link"><i class="fas fa-door-open"></i> Keluar</a></li>
+            </ul>
+          </div>
+
+          <div class="main-wrapper">
+
+            <!-- Tambah Barang -->
+            <div class="card">
+              <div class="card-header"><i class="fas fa-shopping-cart"></i>  Tambah Barang</div>
+              <form class="form-grid">
+                <div class="form-group">
+                  <label for="kode">Kode Barang</label>
+                  <input type="text" id="kode" value="GDUHGBHGDJY" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="nama">Nama Barang</label>
+                  <input type="text" id="nama" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="harga">Harga Barang</label>
+                  <input type="text" id="harga">
+                </div>
+                <div class="form-group">
+                  <label for="tanggal">Tanggal Input</label>
+                  <input type="text" id="tanggal" placeholder="Harga" readonly>
+                  <button type="button" class="btn-tambah"><i class="fas fa-plus"></i> Tambah</button>
+                </div>
+              </form>
+
+              <div id="modalTambah" class="modal-overlay" style="display: none;">
+                <div class="modal-content">
+                  <p>Apakah Anda yakin ingin menambahkan barang ini?</p>
+                  <div class="modal-buttons">
+                    <button id="konfirmasiTambah" class="btn confirm">Ya, Tambah</button>
+                    <button id="batalTambah" class="btn cancel">Batal</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            <!-- Data Barang -->
+            <div class="card">
+              <div class="card-header">Data Barang</div>
+              <div class="table-controls">
+                <label>Show 
+                  <select>
+                    <option>10</option>
+                    <option>25</option>
+                    <option>50</option>
+                  </select>
+                </label>
+                <input type="text" placeholder="Search">
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Id Barang</th>
+                    <th>Nama Barang</th>
+                    <th>Harga</th>
+                    <th>Tanggal Input</th>
+                    <th>Opsi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="6">No data available in table</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>       
+          </div> 
+    </div>
+  </div>
+
+   <!-- Perintah Logout-->
+   <div id="confirmModal" class="modal-overlay">
+    <div class="modal-content">
+      <p>Apakah Anda yakin ingin keluar dari web KASIR "TEPI CANGKIR" ini?</p>
+      <div class="modal-buttons">
+        <button id="confirmExit" class="btn confirm">Ya, Keluar</button>
+        <button id="cancelExit" class="btn cancel">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const logoutLink = document.getElementById("logout-link");
+    const modal = document.getElementById("confirmModal");
+    const confirmExit = document.getElementById("confirmExit");
+    const cancelExit = document.getElementById("cancelExit");
+  
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault(); // Batalkan navigasi
+      modal.style.display = "flex"; // Tampilkan modal
+    });
+  
+    confirmExit.addEventListener("click", () => {
+      window.location.href = "login.html"; // Redirect keluar
+    });
+  
+    cancelExit.addEventListener("click", () => {
+      modal.style.display = "none"; // Tutup modal
+    });
+  
+    // Optional: Klik luar modal tutup juga
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  </script>
+
+  <!--Popup Ingin Menambahkan Barang-->
+  <script>
+    const btnTambah = document.querySelector(".btn-tambah");
+    const modalTambah = document.getElementById("modalTambah");
+    const konfirmasiTambah = document.getElementById("konfirmasiTambah");
+    const batalTambah = document.getElementById("batalTambah");
+  
+    btnTambah.addEventListener("click", () => {
+      modalTambah.style.display = "flex";
+    });
+  
+    konfirmasiTambah.addEventListener("click", () => {
+      modalTambah.style.display = "none";
+      // Simulasi aksi menambahkan barang (bisa diganti dengan fungsi sebenarnya)
+      alert("Barang berhasil ditambahkan!");
+    });
+  
+    batalTambah.addEventListener("click", () => {
+      modalTambah.style.display = "none";
+    });
+  
+    window.addEventListener("click", (e) => {
+      if (e.target === modalTambah) {
+        modalTambah.style.display = "none";
+      }
+    });
+  </script>
+  
+</body>
+</html>

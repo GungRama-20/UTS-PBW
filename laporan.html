@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tepi Cangkir</title>
+  <link rel="stylesheet" href="laporan.css">
+  <link rel="stylesheet" href="logout.css">
+  <link rel="stylesheet" href="Popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1><i>TEPI CANGKIR</i></h1>
+      </header>
+    
+      <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">Hallo, Bli Gung</div>
+            <ul class="menu">
+              <li><a href="dashboard.html"><i class="fas fa-house"></i> Dashboard</a></li>
+              <li><a href="kasir.html"><i class="fas fa-cash-register"></i> Kasir</a></li>
+              <li><a href="barang.html"><i class="fas fa-box"></i> Barang</a></li>
+              <li class="active"><a href="#"><i class="fas fa-chart-bar"></i> Laporan</a></li>
+              <li><a href="pengaturan.html"><i class="fas fa-gear"></i> Pengaturan</a></li>
+              <li><a href="#" id="logout-link"><i class="fas fa-door-open"></i> Keluar</a></li>
+            </ul>
+          </div>
+         
+
+    <main class="content">
+      <div class="card">
+        <h2>Data Barang</h2>
+        <div class="search-box">
+          <label>Search</label>
+          <input type="text" placeholder="Cari...">
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Id Barang</th>
+              <th>Nama Barang</th>
+              <th>Harga</th>
+              <th>Tanggal Input</th>
+              <th>Opsi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="6" class="no-data">No data available in table</td>
+            </tr>
+          </tbody>
+          <tfoot>
+              <tr>
+                <td colspan="5" class="total-cell">
+                  <div class="total-wrapper">
+                    <strong>TOTAL :</strong> &nbsp; <strong>Rp. 0,-</strong>
+                  </div>
+                </td>
+              </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="show">
+          Showing 0 to 0 enteris
+      </div>
+    </main>
+  </div>
+
+  <!-- Perintah Logout-->
+  <div id="confirmModal" class="modal-overlay">
+    <div class="modal-content">
+      <p>Apakah Anda yakin ingin keluar dari web KASIR "TEPI CANGKIR" ini?</p>
+      <div class="modal-buttons">
+        <button id="confirmExit" class="btn confirm">Ya, Keluar</button>
+        <button id="cancelExit" class="btn cancel">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const logoutLink = document.getElementById("logout-link");
+    const modal = document.getElementById("confirmModal");
+    const confirmExit = document.getElementById("confirmExit");
+    const cancelExit = document.getElementById("cancelExit");
+  
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault(); // Batalkan navigasi
+      modal.style.display = "flex"; // Tampilkan modal
+    });
+  
+    confirmExit.addEventListener("click", () => {
+      window.location.href = "login.html"; // Redirect keluar
+    });
+  
+    cancelExit.addEventListener("click", () => {
+      modal.style.display = "none"; // Tutup modal
+    });
+  
+    // Optional: Klik luar modal tutup juga
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

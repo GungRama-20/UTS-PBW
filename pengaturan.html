@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kopi</title>
+    <link rel="stylesheet" href="pengaturan.css">
+    <link rel="stylesheet" href="logout.css">
+    <link rel="stylesheet" href="Popup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1><i>TEPI CANGKIR</i></h1>
+      </header>
+    
+      <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">Hallo, Bli Gung</div>
+            <ul class="menu">
+              <li><a href="dashboard.html"><i class="fas fa-house"></i> Dashboard</a></li>
+              <li><a href="kasir.html"><i class="fas fa-cash-register"></i> Kasir</a></li>
+              <li><a href="barang.html"><i class="fas fa-box"></i> Barang</a></li>
+              <li><a href="laporan.html"><i class="fas fa-chart-bar"></i> Laporan</a></li>
+              <li class="active"><a href="#"><i class="fas fa-gear"></i> Pengaturan</a></li>
+              <li><a href="#" id="logout-link"><i class="fas fa-door-open"></i> Keluar</a></li>
+            </ul>
+          </div>
+          <main class="main-content">
+            <section class="account-settings">
+                <h2>Account setting</h2>
+                <form id="accountForm">
+                <label>Nama Toko :</label>
+                <input type="text" value="TEPI CANGKIR" />
+        
+                <label>Telepon :</label>
+                <input type="text" value="081081081081" />
+        
+                <label>Alamat :</label>
+                <input type="text" value="Jl. Pantai Berawa No.88" />
+        
+                <label>Username :</label>
+                <input type="text" value="Bli Gung" />
+        
+                <label>New Password :</label>
+                <input type="password" value="***************" />
+        
+                <button type="submit" id="accountSubmitBtn">Update</button>
+                </form>
+                <div id="updateModal" class="modal-overlay">
+                    <div class="modal-content">
+                      <p>Apakah Anda yakin ingin memperbarui akun?</p>
+                      <div class="modal-buttons">
+                        <button id="confirmUpdate" class="btn confirm">Ya, Update</button>
+                        <button id="cancelUpdate" class="btn cancel">Batal</button>
+                      </div>
+                    </div>
+                  </div>
+            </section>
+            </main>
+            <main class="main-content">
+                <section class="account-settings">
+                    <h2>Profile</h2>
+                    <form id="profileForm">
+                    <img src="profile.jpeg" alt="Profile" class="profile-img" />
+                    <label>Nama :</label>
+                    <input type="text" value="Bli Gung" />
+            
+                    <label>Email :</label>
+                    <input type="text" value="BilGung@gmail.com" />
+            
+                    <label>Posisi :</label>
+                    <input type="text" value="Admin" />
+            
+                    <button type="submit" id="profileSubmitBtn">Update</button>
+                    </form>
+
+                    <div id="profileUpdateModal" class="modal-overlay">
+                        <div class="modal-content">
+                          <p>Apakah Anda yakin ingin memperbarui profile?</p>
+                          <div class="modal-buttons">
+                            <button id="confirmProfileUpdate" class="btn confirm">Ya, Update</button>
+                            <button id="cancelProfileUpdate" class="btn cancel">Batal</button>
+                          </div>
+                        </div>
+                      </div>
+                </section>
+                </main>
+
+
+                 <!-- Perintah Logout-->
+  <div id="confirmModal" class="modal-overlay">
+    <div class="modal-content">
+      <p>Apakah Anda yakin ingin keluar dari web KASIR "TEPI CANGKIR" ini?</p>
+      <div class="modal-buttons">
+        <button id="confirmExit" class="btn confirm">Ya, Keluar</button>
+        <button id="cancelExit" class="btn cancel">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const logoutLink = document.getElementById("logout-link");
+    const modal = document.getElementById("confirmModal");
+    const confirmExit = document.getElementById("confirmExit");
+    const cancelExit = document.getElementById("cancelExit");
+  
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault(); // Batalkan navigasi
+      modal.style.display = "flex"; // Tampilkan modal
+    });
+  
+    confirmExit.addEventListener("click", () => {
+      window.location.href = "login.html"; // Redirect keluar
+    });
+  
+    cancelExit.addEventListener("click", () => {
+      modal.style.display = "none"; // Tutup modal
+    });
+  
+    // Optional: Klik luar modal tutup juga
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  </script>
+
+<!---Popup Update account setting-->
+<script>
+    const accountForm = document.getElementById("accountForm");
+const updateModal = document.getElementById("updateModal");
+const confirmUpdate = document.getElementById("confirmUpdate");
+const cancelUpdate = document.getElementById("cancelUpdate");
+
+let accountConfirmed = false;
+
+accountForm.addEventListener("submit", function (e) {
+  if (!accountConfirmed) {
+    e.preventDefault();
+    updateModal.style.display = "flex";
+  }
+});
+
+confirmUpdate.addEventListener("click", () => {
+  accountConfirmed = true;
+  updateModal.style.display = "none";
+  accountForm.submit();
+});
+
+cancelUpdate.addEventListener("click", () => {
+  updateModal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === updateModal) {
+    updateModal.style.display = "none";
+  }
+});
+
+</script>
+
+<!-- Popup Update profile-->
+ <script>
+    const profileForm = document.getElementById("profileForm");
+const profileModal = document.getElementById("profileUpdateModal");
+const confirmProfileUpdate = document.getElementById("confirmProfileUpdate");
+const cancelProfileUpdate = document.getElementById("cancelProfileUpdate");
+
+let profileConfirmed = false;
+
+profileForm.addEventListener("submit", function (e) {
+  if (!profileConfirmed) {
+    e.preventDefault();
+    profileModal.style.display = "flex";
+  }
+});
+
+confirmProfileUpdate.addEventListener("click", () => {
+  profileConfirmed = true;
+  profileModal.style.display = "none";
+  profileForm.submit();
+});
+
+cancelProfileUpdate.addEventListener("click", () => {
+  profileModal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === profileModal) {
+    profileModal.style.display = "none";
+  }
+});
+
+ </script>
+</body>
+</html>
