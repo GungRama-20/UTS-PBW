@@ -8,7 +8,9 @@ Primakara University
 Nama Kelompok:  
 - I Nyoman Ari Parwata (2301010002)  
 - Anak Agung Rama Dwi Saputra (2301010021)
+
 Kelas : Pagi 1
+
 Prodi : Sistem Informasi
 ---
 
