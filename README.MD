@@ -29,5 +29,5 @@ Aplikasi ini dikembangkan sebagai bagian dari Ujian Tengah Semester mata kuliah 
 ## Teknologi yang Digunakan
 
 - **HTML** – Struktur halaman
-- **CSS** – Desain tampilan (bisa menggunakan Bootstrap atau Tailwind)
+- **CSS** – Desain tampilan 
 - **JavaScript** – Interaktivitas dan logika kasir
